@@ -57,7 +57,7 @@ declared as `alive` again.
 
 As any given time, at node `Mi`
 
-On receipt of `ping-req(Mm, Mj , pr)` message (`Mj`!= `Mi`), send a `ping(Mi, Mj , Mm, pr)` message to `Mj`
+On receipt of `ping-req(Mm, Mj , pr)` message (`Mj` != `Mi`), send a `ping(Mi, Mj , Mm, pr)` message to `Mj`
 
 On receipt of `ack(Mi, Mj , Mm, pr)` message from `Mj`, send an `ack(Mm, Mj , pr)` message to received to `Mm`
 
