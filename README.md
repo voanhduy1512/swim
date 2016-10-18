@@ -19,23 +19,12 @@ compromise response times or false positive frequency w.r.t. detecting
 process crashes**
 
 The new system, called SWIM, provides a membership substrate that:
-```
-(1) imposes a constant message load per group member;
-(2) detects a process failure in an (expected) constant time
-at some non-faulty process in the group;
-(3) provides a deterministic bound (as a function of group
-size) on the local time that a non-faulty process takes to detect
-failure of another process;
-(4) propagates membership updates, including information
-about failures, in infection-style (also gossip-style or
-epidemic-style); the dissemination latency in the
-group grows slowly (logarithmically) with the number of
-members;
-(5) provides a mechanism to reduce the rate of false positives
-by “suspecting” a process before “declaring” it as
-failed within the group 
-```
 
+ 1. imposes a constant message load per group member;
+ 2. detects a process failure in an (expected) constant time at some non-faulty process in the group;
+ 3. provides a deterministic bound (as a function of group size) on the local time that a non-faulty process takes to detect failure of another process;
+ 4. propagates membership updates, including information about failures, in infection-style (also gossip-style or epidemic-style); the dissemination latency in the group grows slowly (logarithmically) with the number of members;
+ 5. provides a mechanism to reduce the rate of false positives by “suspecting” a process before “declaring” it as failed within the group 
 
 SWIM has two components:
 (1) a Failure Detector Component, that detects failures of members, and
@@ -69,8 +58,11 @@ declared as `alive` again.
 As any given time, at node `Mi`
 
 On receipt of `ping-req(Mm, Mj , pr)` message (`Mj`!= `Mi`), send a `ping(Mi, Mj , Mm, pr)` message to `Mj`
+
 On receipt of `ack(Mi, Mj , Mm, pr)` message from `Mj`, send an `ack(Mm, Mj , pr)` message to received to `Mm`
+
 On receipt of `ping(Mm, Mi, Ml, pr)` message from `Mm`, reply with an `ack(Mm, Mi, Ml, pr)` message to `Mm`
+
 On receipt of `ping(Mm, Mi, pr)` message from `Mm`, reply with an `ack(Mm, Mi, pr)` message to `Mm`
 
 ## Dissemination Component (cont.)
